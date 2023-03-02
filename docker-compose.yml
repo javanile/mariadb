@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  mariadb:
+    build: versions/10.6.12
+    #build: versions/10.11.2
+    environment:
+      - MYSQL_DATABASE=database
+      - MYSQL_ROOT_PASSWORD=secret
+    volumes:
+      - ./tests/fixtures/log:/var/log/mysql
+      - ./tests/fixtures/dataset:/var/lib/mysql-dataset
+      - ./tests/fixtures/docker.conf.d:/etc/mysql/docker.conf.d
+      - ./tests/fixtures/docker.d:/etc/docker.d
